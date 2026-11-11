@@ -1,10 +1,11 @@
 import { elementary } from "./elementary";
 import { material } from "./material";
+import { tailwind } from "./tailwind";
 import type { Palette, Shades } from "./types";
 
 export type { Palette, Shades } from "./types";
 
-export const palettes = { material, elementary } satisfies Record<string, Palette>;
+export const palettes = { material, tailwind, elementary } satisfies Record<string, Palette>;
 
 export type PaletteId = keyof typeof palettes;
 

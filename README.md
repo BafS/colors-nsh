@@ -33,4 +33,4 @@ nsh package --target web     # .nsh/out/Material Colors/, a static site
 | `src/HueRail.tsx` | Hue circles |
 | `src/Swatches.tsx` | Shade rows: press to copy, entrance motion, scrolls when the window is too short |
 | `src/color.ts` | WCAG text contrast, hue titles |
-| `src/palettes/` | Palette data (Material: Apache-2.0, Google) |
+| `src/palettes/` | Palette data (Material: Apache-2.0, Google; Tailwind: MIT, Tailwind Labs) |
