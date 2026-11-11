@@ -25,6 +25,14 @@ describe("hues", () => {
     expect(app.shows("text:#009688")).toBe(true);
     expect(app.shows("text:#F44336")).toBe(false);
   });
+
+  test("choosing a hue from the title switch shows its shades", async () => {
+    const app = await open("./App.tsx", desktop);
+    await app.press("label:Hue");
+    await app.press("text:Teal");
+    expect(app.shows("text:#009688")).toBe(true);
+    expect(app.shows("text:#F44336")).toBe(false);
+  });
 });
 
 describe("palettes", () => {

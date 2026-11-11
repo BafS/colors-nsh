@@ -1,5 +1,4 @@
 import { computed, mount, signal, Storage, View } from "nsh";
-import { hueTitle } from "./src/color";
 import { Header } from "./src/Header";
 import { HueRail } from "./src/HueRail";
 import { DEFAULT_PALETTE, isPaletteId, type PaletteId, palettes, resolveHue } from "./src/palettes";
@@ -29,7 +28,12 @@ function App() {
           const hue = computed(() => resolveHue(palette(), chosenHue()));
           return (
             <>
-              <Header title={hueTitle(hue())} palette={id()} onPaletteChange={choosePalette} />
+              <Header
+                palette={id()}
+                hue={hue()}
+                onPaletteChange={choosePalette}
+                onHueChange={(next) => chosenHue.set(next)}
+              />
               <View class="flex-1 flex-row">
                 <HueRail palette={palette()} selected={hue()} onSelect={(next) => chosenHue.set(next)} />
                 <View class="flex-1 border-l border-border">
