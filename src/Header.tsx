@@ -27,9 +27,9 @@ export function Header(props: { title: string; palette: PaletteId; onPaletteChan
         onChange={({ value }) => value !== null && props.onPaletteChange(value as PaletteId)}
         accessibilityLabel="Palette"
         offset={4}
-        popupClass="rounded-md border border-border bg-popover p-1 text-popover-foreground shadow-md"
+        popupClass="min-w-24 rounded-md border border-border bg-popover p-1 text-popover-foreground shadow-md"
         backdropClass="bg-black/40"
-        itemClass="rounded px-2 py-1 text-xs focus:bg-accent focus:text-accent-foreground selected:font-semibold"
+        itemClass="rounded px-2 py-1 text-xs line-clamp-1 selected:bg-muted focus:bg-accent focus:text-accent-foreground"
         trigger={
           <View class="flex-row items-center gap-1 rounded px-1.5 py-0.5 hover:bg-accent active:bg-accent">
             <Text class="text-[11px] text-muted-foreground">{palettes[props.palette].name}</Text>
