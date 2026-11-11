@@ -1,11 +1,11 @@
 {
-  "name": "Material Colors",
+  "name": "Colors",
   "id": "ch.bafs.materialcolors",
   "version": "1.0.0",
   "build": 1,
   "icon": "icon.png",
   "window": {
-    "title": "Material Colors",
+    "title": "Colors",
     "defaultSize": { "width": 280, "height": 590 },
     "titleBar": { "style": "hidden", "height": 28 }
   },

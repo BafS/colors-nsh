@@ -1,11 +1,15 @@
-# Material Colors
+# Colors
 
-Pick a Material, Tailwind, Elementary, IBM, GitHub Primer, Radix, Atlassian or Nord color and click it to copy it
-(right-click for rgb, hsl or oklch).
+A handy app for copying colors from your favourite palette: click a swatch to copy its hex, right-click for rgb, hsl
+or oklch.
+
+<p align="center"><img src="https://i.imgur.com/cxLGvC0.png" alt="Colors screenshot" width="320"></p>
 
 A port of [Material-Colors-native](https://github.com/BafS/Material-Colors-native) (React Native macOS) to
 [Native Shell](https://nsh.dev/): one TSX app that runs natively on macOS, and from the same code on Windows, Linux,
 iOS, Android and the web. Heavily inspired by [MaterialColorsApp](https://github.com/romannurik/MaterialColorsApp).
+
+Palettes: Material, Tailwind, Elementary, IBM, GitHub Primer, Radix, Atlassian and Nord.
 
 ## Develop
 
@@ -21,18 +25,12 @@ nsh test --target macos   # the same tests in a real macOS window
 ## Package
 
 ```sh
-nsh package --target macos   # .nsh/out/Material Colors.app (ad-hoc signed)
-nsh package --target web     # .nsh/out/Material Colors/, a static site
+nsh package --target macos   # .nsh/out/Colors.app (ad-hoc signed)
+nsh package --target web     # .nsh/out/Colors/, a static site
 ```
 
-## Layout
+## Palette licenses
 
-| Path | Role |
-|---|---|
-| `nsh.json` | App metadata, main window (title, size, hidden title bar), capabilities |
-| `App.tsx` | Palette/hue state, saved palette (`Storage` key `palette`) |
-| `src/Header.tsx` | Draggable title bar: hue and palette `Select` switches |
-| `src/HueRail.tsx` | Hue circles |
-| `src/Swatches.tsx` | Shade rows: press to copy, entrance motion, scrolls when the window is too short |
-| `src/color.ts` | WCAG text contrast, hue titles, copy formats |
-| `src/palettes/` | Palette data (Material: Apache-2.0, Google; Tailwind: MIT, Tailwind Labs; IBM: Apache-2.0, IBM Carbon; Primer: MIT, GitHub; Radix: MIT, WorkOS; Atlassian: Apache-2.0, Atlassian; Nord: MIT, Arctic Ice Studio) |
+Material: Apache-2.0, Google; Tailwind: MIT, Tailwind Labs; IBM: Apache-2.0, IBM Carbon; Primer: MIT, GitHub;
+Radix: MIT, WorkOS; Atlassian: Apache-2.0, Atlassian; Nord: MIT, Arctic Ice Studio; Elementary:
+[elementary brand colors](https://elementary.io/brand#color).
