@@ -3,7 +3,8 @@ import { Select } from "nsh/base";
 import { titleBar } from "nsh/desktop";
 import { type PaletteId, paletteIds, palettes } from "./palettes";
 
-export const TITLE_BAR_HEIGHT = 28;
+/** nsh.json `window.titleBar.height`; the bar's height off desktops, where `titleBar()` is all 0. */
+const TITLE_BAR_HEIGHT = 28;
 
 const PALETTE_ITEMS = paletteIds.map((id) => ({ value: id, title: palettes[id].name }));
 
@@ -11,7 +12,7 @@ export function Header(props: { title: string; palette: PaletteId; onPaletteChan
   return (
     <View
       desktop={{ windowDrag: true }}
-      class="flex-row items-center gap-2 border-b border-border"
+      class="flex-row items-center gap-2"
       style={{
         height: titleBar().height || TITLE_BAR_HEIGHT,
         paddingLeft: titleBar().left + 8,

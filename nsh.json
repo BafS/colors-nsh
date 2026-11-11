@@ -4,6 +4,11 @@
   "version": "1.0.0",
   "build": 1,
   "icon": "icon.png",
+  "window": {
+    "title": "Material Colors",
+    "defaultSize": { "width": 340, "height": 620 },
+    "titleBar": { "style": "hidden", "height": 28 }
+  },
   "capabilities": {
     "clipboard": true
   }

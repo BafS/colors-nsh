@@ -28,7 +28,8 @@ nsh package --target web     # .nsh/out/Material Colors/, a static site
 
 | Path | Role |
 |---|---|
-| `App.tsx` | Window setup, palette/hue state, saved palette (`Storage` key `palette`) |
+| `nsh.json` | App metadata, main window (title, size, hidden title bar), capabilities |
+| `App.tsx` | Palette/hue state, saved palette (`Storage` key `palette`) |
 | `src/Header.tsx` | Draggable title bar: hue title and palette `Select` |
 | `src/HueRail.tsx` | Hue circles |
 | `src/Swatches.tsx` | Shade rows: press to copy, entrance motion, scrolls when the window is too short |

@@ -1,18 +1,11 @@
 import { computed, mount, signal, Storage, View } from "nsh";
-import { isAvailable, Window } from "nsh/desktop";
 import { hueTitle } from "./src/color";
-import { Header, TITLE_BAR_HEIGHT } from "./src/Header";
+import { Header } from "./src/Header";
 import { HueRail } from "./src/HueRail";
 import { DEFAULT_PALETTE, isPaletteId, type PaletteId, palettes, resolveHue } from "./src/palettes";
 import { Swatches } from "./src/Swatches";
 
 export const PALETTE_KEY = "palette";
-
-if (isAvailable) {
-  Window.setTitle("Material Colors");
-  Window.setTitleBar({ style: "hidden", height: TITLE_BAR_HEIGHT });
-  Window.setFrame({ size: { width: 340, height: 620 } });
-}
 
 function App() {
   const paletteId = signal<PaletteId | null>(null);
