@@ -6,7 +6,7 @@
   "icon": "icon.png",
   "window": {
     "title": "Material Colors",
-    "defaultSize": { "width": 340, "height": 620 },
+    "defaultSize": { "width": 280, "height": 590 },
     "titleBar": { "style": "hidden", "height": 28 }
   },
   "capabilities": {
