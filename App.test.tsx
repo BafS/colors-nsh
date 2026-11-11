@@ -14,6 +14,23 @@ describe("swatches", () => {
     expect(app.shows("text:Copied")).toBe(false);
     expect(app.shows("text:#F44336")).toBe(true);
   });
+
+  test("right-clicking a swatch copies it in another format and makes that the default", async () => {
+    const app = await open("./App.tsx", desktop);
+    await app.rightClick("label:Copy 500 #F44336");
+    await app.press("text:rgb(244 67 54)");
+    expect(app.clipboard()).toBe("rgb(244 67 54)");
+    expect(app.storage().copyFormat).toBe("rgb");
+
+    await app.press("label:Copy 700 #D32F2F");
+    expect(app.clipboard()).toBe("rgb(211 47 47)");
+  });
+
+  test("copies in the saved format", async () => {
+    const app = await open("./App.tsx", { ...desktop, storage: { copyFormat: "hsl" } });
+    await app.press("label:Copy 500 #F44336");
+    expect(app.clipboard()).toBe("hsl(4 90% 58%)");
+  });
 });
 
 describe("hues", () => {
