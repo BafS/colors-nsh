@@ -1,11 +1,25 @@
+import { atlassian } from "./atlassian";
 import { elementary } from "./elementary";
+import { ibm } from "./ibm";
 import { material } from "./material";
+import { nord } from "./nord";
+import { primer } from "./primer";
+import { radix } from "./radix";
 import { tailwind } from "./tailwind";
 import type { Palette, Shades } from "./types";
 
 export type { Palette, Shades } from "./types";
 
-export const palettes = { material, tailwind, elementary } satisfies Record<string, Palette>;
+export const palettes = {
+  material,
+  tailwind,
+  elementary,
+  ibm,
+  primer,
+  radix,
+  atlassian,
+  nord,
+} satisfies Record<string, Palette>;
 
 export type PaletteId = keyof typeof palettes;
 
@@ -23,7 +37,8 @@ export function resolveHue(palette: Palette, hue: string | null): string {
   return Object.keys(palette.hues)[0];
 }
 
-/** The shade that stands for the hue in the hue rail. */
-export function baseShade(shades: Shades): string {
-  return shades["500"] ?? Object.values(shades)[0];
+/** The shade that stands for `hue` in the hue rail. */
+export function baseShade(palette: Palette, hue: string): string {
+  const shades = palette.hues[hue];
+  return shades[palette.base ?? "500"] ?? Object.values(shades)[0];
 }

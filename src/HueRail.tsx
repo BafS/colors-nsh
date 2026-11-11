@@ -23,7 +23,7 @@ export function HueRail(props: { palette: Palette; selected: string; onSelect: (
       >
         <Each of={hues()}>
           {(hue) => {
-            const color = () => baseShade(props.palette.hues[hue()]);
+            const color = () => baseShade(props.palette, hue());
             const selected = () => hue() === props.selected;
             return (
               <Button
