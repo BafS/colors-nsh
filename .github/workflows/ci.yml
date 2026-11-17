@@ -49,8 +49,31 @@ jobs:
           name: Colors-macos
           path: Colors-macos.zip
 
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install nsh
+        shell: pwsh
+        run: |
+          irm https://nsh.dev/install.ps1 | iex
+          Join-Path $env:LOCALAPPDATA 'nsh\bin' | Out-File -Append -Encoding utf8 $env:GITHUB_PATH
+      - name: Package Windows
+        run: nsh package --target windows
+      - name: Collect zip
+        shell: pwsh
+        run: |
+          Get-ChildItem .nsh/out
+          $zip = Get-ChildItem .nsh/out -Filter *.zip | Select-Object -First 1
+          if (-not $zip) { throw "no .zip in .nsh/out" }
+          Copy-Item $zip.FullName Colors-windows.zip
+      - uses: actions/upload-artifact@v5
+        with:
+          name: Colors-windows
+          path: Colors-windows.zip
+
   release:
-    needs: [test, macos]
+    needs: [test, macos, windows]
     if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
     permissions:
@@ -58,10 +81,13 @@ jobs:
     steps:
       - uses: actions/download-artifact@v5
         with:
-          name: Colors-macos
+          pattern: Colors-*
+          merge-multiple: true
       - uses: softprops/action-gh-release@v2
         with:
-          files: Colors-macos.zip
+          files: |
+            Colors-macos.zip
+            Colors-windows.zip
           generate_release_notes: true
 
   deploy:
