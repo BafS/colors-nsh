@@ -1,4 +1,4 @@
-import { computed, mount, signal, Storage, View } from "nsh";
+import { computed, mount, platform, signal, Storage, View } from "nsh";
 import { type CopyFormat, isCopyFormat } from "./src/color";
 import { Header } from "./src/Header";
 import { HueRail } from "./src/HueRail";
@@ -7,6 +7,9 @@ import { Swatches } from "./src/Swatches";
 
 export const PALETTE_KEY = "palette";
 export const COPY_FORMAT_KEY = "copyFormat";
+
+// nsh.json's window `backdrop` draws a frosted material behind the window on macOS and Windows; leave it uncovered there.
+const frosted = platform.os === "macos" || platform.os === "windows";
 
 function App() {
   const paletteId = signal<PaletteId | null>(null);
@@ -33,7 +36,7 @@ function App() {
   };
 
   return (
-    <View class="flex-1 bg-background pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]">
+    <View class={`flex-1 ${frosted ? "" : "bg-background "}pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]`}>
       <If when={paletteId()}>
         {(id) => {
           const palette = () => palettes[id()];

@@ -7,7 +7,8 @@
   "window": {
     "title": "Colors",
     "defaultSize": { "width": 280, "height": 590 },
-    "titleBar": { "style": "hidden", "height": 28 }
+    "titleBar": { "style": "hidden", "height": 28 },
+    "backdrop": "popover"
   },
   "capabilities": {
     "clipboard": true

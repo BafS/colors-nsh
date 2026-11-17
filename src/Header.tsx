@@ -22,7 +22,7 @@ function Switch(props: {
       onChange={({ value }) => value !== null && props.onChange(value)}
       accessibilityLabel={props.label}
       offset={4}
-      popupClass="min-w-24 max-h-96 rounded-md border border-border bg-popover p-1 text-popover-foreground shadow-md"
+      popupClass="min-w-24 max-h-96 rounded-md border border-border bg-popover/60 backdrop-blur-xl p-1 text-popover-foreground shadow-md"
       backdropClass="bg-black/40"
       itemClass="rounded px-2 py-1 text-xs line-clamp-1 selected:bg-muted focus:bg-accent focus:text-accent-foreground"
       trigger={
