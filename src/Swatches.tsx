@@ -29,8 +29,10 @@ export function Swatches(props: {
   });
 
   const copy = async (hex: string, format = props.copyFormat) => {
-    await Clipboard.writeText(formatColor(hex, format));
-    copied.set(hex);
+    const result = await Clipboard.writeText(formatColor(hex, format));
+    if (result !== "failed") {
+      copied.set(hex);
+    }
   };
 
   const copyAs = (hex: string, format: CopyFormat) => {

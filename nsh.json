@@ -10,7 +10,9 @@
     "titleBar": { "style": "hidden", "height": 28 },
     "backdrop": "popover"
   },
+  "application": { "quitMode": "lastWindowClosed" },
   "capabilities": {
-    "clipboard": true
+    "clipboard": true,
+    "application": true
   }
 }
