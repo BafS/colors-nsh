@@ -1,11 +1,7 @@
 import { Text, View } from "nsh";
-import { Select } from "nsh/base";
-import { titleBar } from "nsh/desktop";
+import { Select, TitleBar } from "nsh/base";
 import { hueTitle } from "./color";
 import { type PaletteId, paletteIds, palettes } from "./palettes";
-
-/** nsh.json `window.titleBar.height`; the bar's height off desktops, where `titleBar()` is all 0. */
-const TITLE_BAR_HEIGHT = 28;
 
 const PALETTE_ITEMS = paletteIds.map((id) => ({ value: id, title: palettes[id].name }));
 
@@ -45,24 +41,19 @@ export function Header(props: {
 }) {
   const hueItems = () => Object.keys(palettes[props.palette].hues).map((hue) => ({ value: hue, title: hueTitle(hue) }));
   return (
-    <View
-      desktop={{ windowDrag: true }}
-      class="flex-row items-center gap-2"
-      style={{
-        height: titleBar().height || TITLE_BAR_HEIGHT,
-        paddingLeft: titleBar().left + 2,
-        paddingRight: titleBar().right + 6,
-      }}
-    >
-      <View class="flex-1 flex-row">
-        <Switch items={hueItems()} value={props.hue} label="Hue" onChange={props.onHueChange} />
+    // h-7 matches nsh.json `window.titleBar.height`, and keeps the bar off desktops, where there is no title bar area.
+    <TitleBar class="h-7 items-center">
+      <View class="flex-1 flex-row items-center gap-2 pl-0.5 pr-1.5">
+        <View class="flex-1 flex-row">
+          <Switch items={hueItems()} value={props.hue} label="Hue" onChange={props.onHueChange} />
+        </View>
+        <Switch
+          items={PALETTE_ITEMS}
+          value={props.palette}
+          label="Palette"
+          onChange={(value) => props.onPaletteChange(value as PaletteId)}
+        />
       </View>
-      <Switch
-        items={PALETTE_ITEMS}
-        value={props.palette}
-        label="Palette"
-        onChange={(value) => props.onPaletteChange(value as PaletteId)}
-      />
-    </View>
+    </TitleBar>
   );
 }
